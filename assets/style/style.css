@@ -1,0 +1,21 @@
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+h6 {
+    font-family: 'Marvel', sans-serif;
+    letter-spacing: 0.2rem; 
+    word-spacing: 0.2rem; 
+}
+
+.generator {
+    border: #dee2e6 dashed 1px; 
+}
+
+#pill1 {
+    border-radius: 2.3rem; 
+}
+
+#pill2 {
+    border-radius: 2.3rem; 
+}
