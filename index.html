@@ -35,8 +35,10 @@
     <script type="text/javascript">
 
         const passwordArray = [];
+        const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+        const special = " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 
-
+//user prompt to determine password lenght
         let numberChar = prompt("How many characters in your password? It must be between 8 and 128.");
         let numberCharInt = parseInt(numberChar); 
 
@@ -47,18 +49,79 @@
             console.log(numberCharInt); 
 
         }
+//user prompt to select type
+        let passwordType = prompt ("Select what type of password you want to create by typing in the number of your selection below <br> 1 - special characters <br> 2 - numberic <br> 3 - lowercase letters <br> 4 - uppercase letters"); 
+        let passwordTypeInt = parseInt(passwordType); 
 
+
+ //function to generate random integer between 0 and 9
         function randomInt() {
-            return Math.round(Math.random() *10);
+            return Math.floor(Math.random() *10);
         }; 
-    
-        for (let i=0; i<numberCharInt; i++) {
-            passwordArray.push(randomInt()); 
+
+//function to generate random interger between 0 and 25 for alphabet 
+        function alphaRandInt() {
+            return Math.floor(Math.random()*26); 
         }
+
+//function to generate random interger in range 0 to given number:
+        function randomIntRange(num) {
+            return Math.floor(Math.random()*num); 
+        }
+
+        console.log(passwordTypeInt);
+    
+//code to generate random number password of selected length
+        for (let i=0; i<numberCharInt; i++) {
+                passwordArray.push(randomInt());
+        }
+            // } else if (passwordTypeInt === 3 || passwordTypeInt === 4) {
+            //     passwordArray.push(alphaRandInt());
+            //     console.log(passwordArray); 
+            //     passwordArray.forEach(num => {
+            //         passwordArray[num] = alphabet[num]; 
+            //     });
+            
 
         console.log(passwordArray); 
         passwordGen = passwordArray.join('');
-        console.log(passwordGen); 
+        console.log(passwordGen);
+        console.log(passwordArray.length);  
+
+//code to generate random lowercase letter password of selected length
+       
+        const alphaPass = [];
+        for (let m=0; m<numberCharInt; m++) {
+            alphaPass.push(alphaRandInt());
+        }
+
+        console.log(alphaPass); 
+        for (let j=0; j<alphaPass.length; j++) {
+            alphaPass[j] = alphabet[alphaPass[j]];
+        }
+        console.log(alphaPass); 
+        alphaPassGen = alphaPass.join(''); 
+        console.log(alphaPassGen); 
+
+//code to generate uppercase letter password:
+        const upperAlpha = alphaPassGen.toUpperCase(); 
+        console.log(upperAlpha);
+
+//code to generate special characters: 
+        const specialPass = [];
+        for (let k=0; k<numberCharInt; k++) {
+            specialPass.push(randomIntRange(special.length)); 
+        }
+        console.log(specialPass); 
+        for (let x=0; x<specialPass.length; x++) {
+            specialPass[x] = special[specialPass[x]];
+        }
+
+        console.log(specialPass);
+        specialPassGen = specialPass.join('');
+        console.log(specialPassGen);
+        
+
 
     </script>
 </body>
