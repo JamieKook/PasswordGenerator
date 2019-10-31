@@ -31,5 +31,35 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+
+        const passwordArray = [];
+
+
+        let numberChar = prompt("How many characters in your password? It must be between 8 and 128.");
+        let numberCharInt = parseInt(numberChar); 
+
+        while (numberCharInt < 8 || numberCharInt > 128 || isNaN(numberCharInt)) {
+            alert("You must enter a number between 8 and 128");
+            numberChar = prompt("How many characters in your password? It must be between 8 and 128.");
+            numberCharInt = parseInt(numberChar);
+            console.log(numberCharInt); 
+
+        }
+
+        function randomInt() {
+            return Math.round(Math.random() *10);
+        }; 
+    
+        for (let i=0; i<numberCharInt; i++) {
+            passwordArray.push(randomInt()); 
+        }
+
+        console.log(passwordArray); 
+        passwordGen = passwordArray.join('');
+        console.log(passwordGen); 
+
+    </script>
 </body>
 </html>
