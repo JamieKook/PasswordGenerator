@@ -2,7 +2,7 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
 }
 
-h6 {
+textarea {
     font-family: 'Marvel', sans-serif;
     letter-spacing: 0.2rem; 
     word-spacing: 0.2rem; 
@@ -12,10 +12,10 @@ h6 {
     border: #dee2e6 dashed 1px; 
 }
 
-#pill1 {
+#gen {
     border-radius: 2.3rem; 
 }
 
-#pill2 {
+#copy {
     border-radius: 2.3rem; 
 }

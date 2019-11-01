@@ -17,16 +17,20 @@
         <div class="password container bg-white p-3 border rounded">
             <h2 class="text-left">Generate a Password</h2>
             <hr>
-            <div class="generator container rounded pb-5 pt-2 ">
-                <h6 class="text-secondary">Your Secure Password</h6>
-            </div>
+            <textarea
+                readonly
+                id="password"
+                placeholder="Your Secure Password"
+                aria-label="Generated Password"
+                class="w-75 generator rounded pb-5 pt-2 text-center"
+            ></textarea>
             <hr>
             <div class="row">
                 <div class="col-sm-6 mb-2">
-                    <button type="button" id="pill1" class="btn btn-danger btn-lg">Generate Password</button>
+                    <button type="button" id="gen" class="btn btn-danger btn-lg">Generate Password</button>
                 </div>
                 <div class="col-sm-6 mb-2"> 
-                    <button type="button" id="pill2" class="btn btn-secondary btn-lg">Copy to Clipboard</button>
+                    <button type="button" id="copy" class="btn btn-secondary btn-lg">Copy to Clipboard</button>
                 </div>
             </div>
         </div>
@@ -41,54 +45,65 @@
         const numerical = "012345689";
         let passwordOptions ='';  
 
+        document.getElementById("gen").addEventListener("click", function(){
+            genPassword(); 
+            document.getElementById("password").innerHTML =("Your password is "+ passwordGenerated);
+        });
 
+        function genPassword() {
 //user prompt to determine password lenght
-        alert("Welcome to the Password Generator!")
-        let numberChar = prompt("How many characters in your password? It must be between 8 and 128.");
-        let numberCharInt = parseInt(numberChar); 
+            alert("Welcome to the Password Generator!")
+            let numberChar = prompt("How many characters in your password? It must be between 8 and 128.");
+            let numberCharInt = parseInt(numberChar); 
 
-        while (numberCharInt < 8 || numberCharInt > 128 || isNaN(numberCharInt)) {
-            alert("You must enter a number between 8 and 128");
-            numberChar = prompt("How many characters in your password? It must be between 8 and 128.");
-            numberCharInt = parseInt(numberChar);
-            console.log(numberCharInt); 
+            while (numberCharInt < 8 || numberCharInt > 128 || isNaN(numberCharInt)) {
+                alert("You must enter a number between 8 and 128");
+                numberChar = prompt("How many characters in your password? It must be between 8 and 128.");
+                numberCharInt = parseInt(numberChar);
+                console.log(numberCharInt); 
+
+            }
+
+
+    //user prompt to select type
+            let useSpecial = confirm("Would you like to have special characters in your password?"); 
+            let useNumerical = confirm("Would you like to have numerical characters in your password?"); 
+            let useLower = confirm("Would you like to have lowercase letters in your password?"); 
+            let useUpper = confirm("Would you like to have uppercase letters in your password?"); 
+
+    //generate list of characters to use in password based on user selection
+            if (useSpecial) {
+                passwordOptions = passwordOptions + special
+                }; 
+            if (useNumerical) {
+                passwordOptions = passwordOptions + numerical
+                }; 
+            if (useLower) {
+                passwordOptions = passwordOptions + alphaLower
+                }; 
+            if (useUpper) {
+                passwordOptions = passwordOptions + alphaUpper
+                }; 
+
+            console.log(passwordOptions); 
+
+    //function to generate random interger in range 0 to last index of a list lenght:
+
+
+            function randomNum(len) {
+                return Math.floor(Math.random()*(len)); 
+            }
+
+            let stringLength= passwordOptions.length;
+
+    //generate password of given lenght form list of possible characters
+            for (i=0; i < numberChar; i++) {
+                passwordGenerated= passwordGenerated + passwordOptions[randomNum(stringLength)];
+            }
+
+            console.log("Generated password is " + passwordGenerated); 
 
         }
-
-
-//user prompt to select type
-        let useSpecial = confirm("Would you like to have special characters in your password?"); 
-        let useNumerical = confirm("Would you like to have numerical characters in your password?"); 
-        let useLower = confirm("Would you like to have lowercase letters in your password?"); 
-        let useUpper = confirm("Would you like to have uppercase letters in your password?"); 
-
-//generate list of characters to use in password based on user selection
-        if (useSpecial) {passwordOptions = passwordOptions + special}; 
-        if (useNumerical) {passwordOptions = passwordOptions + numerical}; 
-        if (useLower) {passwordOptions = passwordOptions + alphaLower}; 
-        if (useUpper) {passwordOptions = passwordOptions + alphaUpper}; 
-
-        console.log(passwordOptions); 
-
-//function to generate random interger in range 0 to last index of a list lenght:
-
-
-        function randomNum(len) {
-            return Math.floor(Math.random()*(len)); 
-        }
-
-        let stringLength= passwordOptions.length;
-
-//generate password of given lenght form list of possible characters
-        for (i=0; i < numberChar; i++) {
-            randomIndex= randomNum(stringLength); 
-            passwordGenerated= passwordGenerated + passwordOptions[randomIndex];
- 
-        }
-
-        console.log("Generated password is " + passwordGenerated); 
-
-
 
     </script>
 </body>
