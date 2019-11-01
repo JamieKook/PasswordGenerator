@@ -32,6 +32,9 @@
                 <div class="col-sm-6 mb-2"> 
                     <button onclick="copyPassword()" type="button" id="copy" class="btn btn-secondary btn-lg" >Copy to Clipboard</button>
                 </div>
+                <!-- <div class="col-sm-4 mb-2"> 
+                    <button id="clear" onclick="document.getElementById('password').value = ''" type="button" id="clear" class="btn btn-info btn-lg" >Clear Password</button>
+                </div> -->
             </div>
         </div>
     </div>
@@ -45,13 +48,10 @@
         const numerical = "012345689";
         let passwordOptions ='';  
 
-        document.getElementById("gen").addEventListener("click", function(){
+        debugger;  
+        document.getElementById("gen").addEventListener("click", function(){ 
             genPassword(); 
-            document.getElementById("password").innerHTML =(passwordGenerated);
-        });
-
-        document.getElementById("copy").addEventListener("click", function(){
-            document.getElementById("password")
+            document.getElementById("password").innerHTML = passwordGenerated;
         });
 
         function copyPassword(){
@@ -62,11 +62,13 @@
         }; 
 
         function genPassword() {
+            passwordOptions =''; 
+            passwordGenerated = '';
 //user prompt to determine password lenght
             alert("Welcome to the Password Generator!")
             let numberChar = prompt("How many characters in your password? It must be between 8 and 128.");
-            debugger;    
-            // let numberCharInt = parseInt(numberChar); 
+            
+     
 
             while (numberChar < 8 || numberChar > 128 || isNaN(numberChar)) {
                 alert("You must enter a number between 8 and 128");
@@ -91,6 +93,7 @@
                 useUpper = confirm("Would you like to have uppercase letters in your password?"); 
 
             }
+              
 
     //generate list of characters to use in password based on user selection
             if (useSpecial) {
@@ -129,3 +132,4 @@
     </script>
 </body>
 </html>
+
