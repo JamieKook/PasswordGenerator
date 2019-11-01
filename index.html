@@ -73,20 +73,20 @@
 //function to generate random interger in range 0 to last index of a list lenght:
 
 
-        function randomInt(len) {
+        function randomNum(len) {
             return Math.floor(Math.random()*(len)); 
         }
 
+        let stringLength= passwordOptions.length;
 
 //generate password of given lenght form list of possible characters
         for (i=0; i < numberChar; i++) {
-            stringLength= passwordOptions.length;
-            randomIndex= randomInt(stringLength); 
+            randomIndex= randomNum(stringLength); 
             passwordGenerated= passwordGenerated + passwordOptions[randomIndex];
  
         }
 
-        console.log("Generated password is" + passwordGenerated); 
+        console.log("Generated password is " + passwordGenerated); 
 
 
 
