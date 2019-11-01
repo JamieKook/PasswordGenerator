@@ -78,12 +78,19 @@
 
     //user prompt to select type
 
-            // while (useSpecial || useNumerical || useLower || useUpper) {
-                let useSpecial = confirm("Would you like to have special characters in your password?"); 
-                let useNumerical = confirm("Would you like to have numerical characters in your password?"); 
-                let useLower = confirm("Would you like to have lowercase letters in your password?"); 
-                let useUpper = confirm("Would you like to have uppercase letters in your password?"); 
-            // }
+            let useSpecial = false; 
+            let useNumerical = false; 
+            let useLower = false; 
+            let useUpper = false; 
+
+            while (!useSpecial && !useNumerical && !useLower && !useUpper) {
+                alert("You need to select at least one character type for your password.");
+                useSpecial = confirm("Would you like to have special characters in your password?"); 
+                useNumerical = confirm("Would you like to have numerical characters in your password?"); 
+                useLower = confirm("Would you like to have lowercase letters in your password?"); 
+                useUpper = confirm("Would you like to have uppercase letters in your password?"); 
+
+            }
 
     //generate list of characters to use in password based on user selection
             if (useSpecial) {
