@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+      //Global Variables
+      const passwordArray = [];
+        const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+        const special = " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+
+        let numSpecial = 0;
+        let numSpecialInt= 0;
+        const typeSpecial = "special"; 
+
+        const typeNumerical= "numerical";
+        let numNumerical= 0;
+        let numNumericalInt= 0;
+
+        const typeLower = "lowercase";
+        let numLower= 0;
+        let numLowerInt = 0;
+
+        const typeUpper = "uppercase"; 
+        let numUpper= 0;
+        let numUpperInt = 0;
+
+        let charCount = numSpecialInt + numNumericalInt + numLowerInt + numUpperInt; 
+        
+
+//Welcome and user instructions
+
+        alert("Welcome to Password Generator! You will be asked to supply the number of characters you want from each category: special characters, numbers, lowercase letters, and uppercase letters.");
+        alert("The sum of your selected characters must fall between 8 and 128");
+
+
+
+
+//User selection function to get different amounts of each character type and validate their input
+    
+        while (charCount < 8 || charCount > 128) {
+
+            numSpecial = prompt("Input the number of " + typeSpecial + " characters you want in your password below:");
+            numSpecialInt= parseInt(numSpecial); 
+            console.log(numSpecialInt); 
+
+            
+            while (numSpecialInt > 128 || isNaN(numSpecialInt)) {
+                if (numSpecialInt > 128) {
+                    alert("You have over 128 characters. You need to input a smaller number");
+                    numSpecial= prompt("Input the number of " + typeSpecial + " characters you want in your password below:");
+                    numSpecialInt= parseInt(numSpecial); 
+                    console.log(numSpecialInt); 
+                    
+                } else if(isNaN(numSpecialInt)) {
+                    alert("You must input a numerical value"); 
+                    numSpecial= prompt("Input the number of " + typeSpecial + " characters you want in your password below:");
+                    numSpecialInt= parseInt(numSpecial); 
+                    console.log(numSpecialInt);
+                    
+                }
+            }
+
+            numNumerical = prompt("Input the number of " + typeNumerical + " characters you want in your password below:");
+            numNumericalInt= parseInt(numNumerical); 
+            console.log(numNumericalInt); 
+
+            
+            while (numNumericalInt > 128 || isNaN(numNumericalInt)) {
+                if (numNumericalInt > 128) {
+                    alert("You have over 128 characters. You need to input a smaller number");
+                    numNumerical= prompt("Input the number of " + typeNumerical + " characters you want in your password below:");
+                    numNumericalInt= parseInt(numNumerical); 
+                    console.log(numNumericalInt); 
+                    
+                } else if(isNaN(numNumericalInt)) {
+                    alert("You must input a numerical value"); 
+                    numNumerical= prompt("Input the number of " + typeNumerical + " characters you want in your password below:");
+                    numNumericalInt= parseInt(numNumerical); 
+                    console.log(numNumericalInt);
+                    
+                }
+            }
+
+            numLower = prompt("Input the number of " + typeLower + " characters you want in your password below:");
+            numLowerInt= parseInt(numLower); 
+            console.log(numLowerInt); 
+
+            
+            while (numLowerInt > 128 || isNaN(numLowerInt)) {
+                if (numLowerInt > 128) {
+                    alert("You have over 128 characters. You need to input a smaller number");
+                    numLower= prompt("Input the number of " + typeLower + " characters you want in your password below:");
+                    numLowerInt= parseInt(numLower); 
+                    console.log(numLowerInt); 
+                    
+                } else if(isNaN(numLowerInt)) {
+                    alert("You must input a numerical value"); 
+                    numLower= prompt("Input the number of " + typeLower + " characters you want in your password below:");
+                    numLowerInt= parseInt(numLower); 
+                    console.log(numLowerInt);
+                    
+                }
+            }
+                
+
+            numUpper = prompt("Input the number of " + typeUpper + " characters you want in your password below:");
+            numUpperInt= parseInt(numUpper); 
+            console.log(numUpperInt); 
+
+            
+            while (numUpperInt > 128 || isNaN(numUpperInt)) {
+                if (numUpperInt > 128) {
+                    alert("You have over 128 characters. You need to input a smaller number");
+                    numUpper= prompt("Input the number of " + typeUpper + " characters you want in your password below:");
+                    numUpperInt= parseInt(numUpper); 
+                    console.log(numUpperInt); 
+                    
+                } else if(isNaN(numUpperInt)) {
+                    alert("You must input a numerical value"); 
+                    numUpper= prompt("Input the number of " + typeUpper + " characters you want in your password below:");
+                    numUpperInt= parseInt(numUpper); 
+                    console.log(numUpperInt);
+                    
+                }
+            }
+            
+
+                
+                charCount = numSpecialInt + numNumericalInt + numLowerInt + numUpperInt;
+                alert("You have a password that is " + charCount + " characters long. With "+ numSpecialInt +" special characters, "+ numNumericalInt+ " numerical characters, "+numLowerInt+" lowercase letters, and "+numUpperInt+" uppercase letters."); 
+                if (charCount < 8 || charCount > 128) {
+                    alert("Your password is not 8 to 128 characters long. Reenter your selections.");
+                }
+        }  
+
+//function to generate random interger in range 0 to given number:
+        function randomIntRange(num) {
+            return Math.floor(Math.random()*(num+1); 
+        }
+
+
+//code to generate special characters: 
+        for (let k=0; k<numberCharInt; k++) {
+            specialPass.push(randomIntRange(special.length)); 
+        }
+        console.log(specialPass); 
+        for (let x=0; x<specialPass.length; x++) {
+            specialPass[x] = special[specialPass[x]];
+        }
+
+        console.log(specialPass);
+        specialPassGen = specialPass.join('');
+        console.log(specialPassGen);
+
+//code to generate random number password of selected length
+        for (let i=0; i<numberCharInt; i++) {
+                passwordArray.push(randomIntRange());
+        }
+
+
+        console.log(passwordArray); 
+        passwordGen = passwordArray.join('');
+        console.log(passwordGen);
+        console.log(passwordArray.length);  
+        
+
+    </script>
+</body>
+</html>

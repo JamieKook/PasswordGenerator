@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Marvel|Source+Sans+Pro:600&display=swap" rel="stylesheet">
+    <link href="assets/style/style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <div class="container.fluid text-center bg-light p-3">
+        <h1 class="mb-5">Password Generator</h1>
+
+        <div class="password container bg-white p-3 border rounded">
+            <h2 class="text-left">Generate a Password</h2>
+            <hr>
+            <textarea class="generator container rounded pb-5 pt-2 text-center" placeholder="Your Secure Password"></textarea>
+            <hr>
+            <div class="row">
+                <div class="col-sm-6 mb-2">
+                    <button type="button" id="pill1" class="btn btn-danger btn-lg">Generate Password</button>
+                </div>
+                <div class="col-sm-6 mb-2"> 
+                    <button type="button" id="pill2" class="btn btn-secondary btn-lg">Copy to Clipboard</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        const passwordArray = [];
+        const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+        const special = " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+
+//Welcome and user instructions
+
+        alert("Welcome to Password Generator! You will be asked to supply the number of characters you want from each category: special characters, numbers, lowercase letters, and uppercase letters.");
+        alert("The sum of your selected characters must fall between 8 and 128");
+
+
+//User selection
+
+ //user prompt to select type
+ let passwordType = prompt ("Select what type of password you want to create by typing in the number of your selection below: 1 - special characters, 2 - numeric, 3 - lowercase letters, 4 - uppercase letters"); 
+        let passwordTypeInt = parseInt(passwordType); 
+
+
+ //function to generate random integer between 0 and 9
+        function randomInt() {
+            return Math.floor(Math.random() *10);
+        }; 
+
+//function to generate random interger between 0 and 25 for alphabet 
+        function alphaRandInt() {
+            return Math.floor(Math.random()*26); 
+        }
+
+//function to generate random interger in range 0 to given number:
+        function randomIntRange(num) {
+            return Math.floor(Math.random()*(num+1); 
+        }
+
+        console.log(passwordTypeInt);
+    
+//code to generate random number password of selected length
+        for (let i=0; i<numberCharInt; i++) {
+                passwordArray.push(randomInt());
+        }
+
+
+        console.log(passwordArray); 
+        passwordGen = passwordArray.join('');
+        console.log(passwordGen);
+        console.log(passwordArray.length);  
+
+//code to generate random lowercase letter password of selected length
+       
+        const alphaPass = [];
+        for (let m=0; m<numberCharInt; m++) {
+            alphaPass.push(alphaRandInt());
+        }
+
+        console.log(alphaPass); 
+        for (let j=0; j<alphaPass.length; j++) {
+            alphaPass[j] = alphabet[alphaPass[j]];
+        }
+        console.log(alphaPass); 
+        alphaPassGen = alphaPass.join(''); 
+        console.log(alphaPassGen); 
+
+//code to generate uppercase letter password:
+        const upperAlpha = alphaPassGen.toUpperCase(); 
+        console.log(upperAlpha);
+
+//code to generate special characters: 
+        const specialPass = [];
+        for (let k=0; k<numberCharInt; k++) {
+            specialPass.push(randomIntRange(special.length)); 
+        }
+        console.log(specialPass); 
+        for (let x=0; x<specialPass.length; x++) {
+            specialPass[x] = special[specialPass[x]];
+        }
+
+        console.log(specialPass);
+        specialPassGen = specialPass.join('');
+        console.log(specialPassGen);
+        
+    </script>
+   
+</body>
+</html>
