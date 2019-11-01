@@ -65,22 +65,25 @@
 //user prompt to determine password lenght
             alert("Welcome to the Password Generator!")
             let numberChar = prompt("How many characters in your password? It must be between 8 and 128.");
-            let numberCharInt = parseInt(numberChar); 
+            debugger;    
+            // let numberCharInt = parseInt(numberChar); 
 
-            while (numberCharInt < 8 || numberCharInt > 128 || isNaN(numberCharInt)) {
+            while (numberChar < 8 || numberChar > 128 || isNaN(numberChar)) {
                 alert("You must enter a number between 8 and 128");
                 numberChar = prompt("How many characters in your password? It must be between 8 and 128.");
-                numberCharInt = parseInt(numberChar);
-                console.log(numberCharInt); 
+              
 
             }
 
 
     //user prompt to select type
-            let useSpecial = confirm("Would you like to have special characters in your password?"); 
-            let useNumerical = confirm("Would you like to have numerical characters in your password?"); 
-            let useLower = confirm("Would you like to have lowercase letters in your password?"); 
-            let useUpper = confirm("Would you like to have uppercase letters in your password?"); 
+
+            // while (useSpecial || useNumerical || useLower || useUpper) {
+                let useSpecial = confirm("Would you like to have special characters in your password?"); 
+                let useNumerical = confirm("Would you like to have numerical characters in your password?"); 
+                let useLower = confirm("Would you like to have lowercase letters in your password?"); 
+                let useUpper = confirm("Would you like to have uppercase letters in your password?"); 
+            // }
 
     //generate list of characters to use in password based on user selection
             if (useSpecial) {
@@ -96,7 +99,7 @@
                 passwordOptions = passwordOptions + alphaUpper
                 }; 
 
-            console.log(passwordOptions); 
+        
 
     //function to generate random interger in range 0 to last index of a list lenght:
 

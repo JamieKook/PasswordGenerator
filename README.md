@@ -1,2 +1,2 @@
 # PasswordGenerator
-This application will randomly generator a password based on user-selected criteria
+This application will randomly generator a password based on user-selected criteria. On the touch of the generate password button, the user will be prompted to input a password length between 8-128 characters. Then they will be given four confirms asking whether they want to include special characters, numbers, lowercase, and/or uppercase
