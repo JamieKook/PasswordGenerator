@@ -30,7 +30,7 @@
                     <button type="button" id="gen" class="btn btn-danger btn-lg">Generate Password</button>
                 </div>
                 <div class="col-sm-6 mb-2"> 
-                    <button type="button" id="copy" class="btn btn-secondary btn-lg">Copy to Clipboard</button>
+                    <button onclick="copyPassword()" type="button" id="copy" class="btn btn-secondary btn-lg" >Copy to Clipboard</button>
                 </div>
             </div>
         </div>
@@ -47,8 +47,19 @@
 
         document.getElementById("gen").addEventListener("click", function(){
             genPassword(); 
-            document.getElementById("password").innerHTML =("Your password is "+ passwordGenerated);
+            document.getElementById("password").innerHTML =(passwordGenerated);
         });
+
+        document.getElementById("copy").addEventListener("click", function(){
+            document.getElementById("password")
+        });
+
+        function copyPassword(){
+            let copyText = document.getElementById("password");
+            copyText.select();
+            document.execCommand("copy");
+            alert("Password copied to your clipboard."); 
+        }; 
 
         function genPassword() {
 //user prompt to determine password lenght
