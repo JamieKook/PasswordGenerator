@@ -138,7 +138,7 @@
             let countCharCheck = 0; 
             let totalCountCharCheck =[]; 
             function checkGeneratedPassword (){ 
-                
+
                 function checkNamedChar(useChar, type) {
                     if(useSpecial) {
                         countCharCheck = 0;
@@ -159,6 +159,7 @@
                 console.log(totalCountCharCheck); 
 
                 while (totalCountCharCheck.indexOf(0) !== -1) {
+                    totalCountCharCheck =[];
                     generateNewPassword(); 
                 }
             }
