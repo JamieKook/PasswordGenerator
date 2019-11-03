@@ -38,13 +38,12 @@
 
     <script type="text/javascript">
 
-        let passwordGenerated = '';
+        
         const alphaLower ="abcdefghijklmnopqrstuvwxyz";
         const alphaUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         const special = " !#$%&'()*+,-./:;<=>?@[]^_`{|}~";
         const numerical = "012345689";
-        let passwordOptions ='';
-        let passwordCheck= [];   
+        let passwordGenerated = ''; 
 
  
         document.getElementById("gen").addEventListener("click", function(){ 
@@ -61,7 +60,8 @@
 
         function genPassword() {
             
-            
+            let passwordOptions ='';
+            let passwordCheck= []; 
 //user prompt to determine password lenght
             alert("Welcome to the Password Generator!")
             let numberChar = prompt("How many characters would you like in your password? It must be between 8 and 128.");
@@ -106,7 +106,7 @@
             addCharSelect(useNumerical, numerical); 
             addCharSelect(useLower, alphaLower);
             addCharSelect(useUpper, alphaUpper); 
-            
+
             // if (useSpecial) {
             //     passwordOptions = passwordOptions + special;
             //     passwordCheck.push(special); 
@@ -129,20 +129,22 @@
     //function to generate random interger in range 0 to last index of a list lenght:
 
 
-            function randomNum(len) {
-                return Math.floor(Math.random()*(len)); 
+            function randomNum() {
+                return Math.floor(Math.random()*(passwordOptions.length)); 
             }
 
-            let stringLength= passwordOptions.length;
+            // let stringLength= passwordOptions.length;
 
     //generate password of given lenght form list of possible characters
             function generateNewPassword(){ 
                 passwordGenerated = '';
                 for (i=0; i < numberChar; i++) {
-                    passwordGenerated= passwordGenerated + passwordOptions[randomNum(stringLength)];
+                    passwordGenerated= passwordGenerated + passwordOptions[randomNum()];
                 }
                 console.log("Generated password is " + passwordGenerated);
             }
+
+    
 
             generateNewPassword(); 
              
@@ -153,7 +155,7 @@
             function checkGeneratedPassword (){ 
 
                 function checkNamedChar(useChar, type) {
-                    if(useSpecial) {
+                    if(useChar) {
                         countCharCheck = 0;
                         for (i=0; i < passwordGenerated.length; i++) {
                             if (type.indexOf(passwordGenerated[i]) !== -1) {
