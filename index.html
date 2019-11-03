@@ -84,7 +84,7 @@
             let useUpper = false; 
 
             while (!useSpecial && !useNumerical && !useLower && !useUpper) {
-                alert("You need to select at least one character type for your password.");
+                alert("You need to select at least one character type for your password from the options following this prompt.");
                 useSpecial = confirm("Would you like to have special characters in your password?"); 
                 useNumerical = confirm("Would you like to have numerical characters in your password?"); 
                 useLower = confirm("Would you like to have lowercase letters in your password?"); 
@@ -94,22 +94,35 @@
               
 
     //generate list of characters to use in password based on user selection
-            if (useSpecial) {
-                passwordOptions = passwordOptions + special;
-                passwordCheck.push(special); 
+
+            function addCharSelect(useChar,type) {
+                if (useChar) {
+                    passwordOptions = passwordOptions + type;
+                    passwordCheck.push(type); 
                 }; 
-            if (useNumerical) {
-                passwordOptions = passwordOptions + numerical;
-                passwordCheck.push(numerical); 
-                }; 
-            if (useLower) {
-                passwordOptions = passwordOptions + alphaLower;
-                passwordCheck.push(alphaLower); 
-                }; 
-            if (useUpper) {
-                passwordOptions = passwordOptions + alphaUpper;
-                passwordCheck.push(alphaUpper); 
-                }; 
+            }
+
+            addCharSelect(useSpecial, special);
+            addCharSelect(useNumerical, numerical); 
+            addCharSelect(useLower, alphaLower);
+            addCharSelect(useUpper, alphaUpper); 
+            
+            // if (useSpecial) {
+            //     passwordOptions = passwordOptions + special;
+            //     passwordCheck.push(special); 
+            //     }; 
+            // if (useNumerical) {
+            //     passwordOptions = passwordOptions + numerical;
+            //     passwordCheck.push(numerical); 
+            //     }; 
+            // if (useLower) {
+            //     passwordOptions = passwordOptions + alphaLower;
+            //     passwordCheck.push(alphaLower); 
+            //     }; 
+            // if (useUpper) {
+            //     passwordOptions = passwordOptions + alphaUpper;
+            //     passwordCheck.push(alphaUpper); 
+            //     }; 
 
         
 
