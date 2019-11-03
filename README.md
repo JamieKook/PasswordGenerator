@@ -6,7 +6,7 @@ The purpose of this application is to quickly generate a strong password for com
 This project utilizes javascript and css. Bootstraps 4 was also utilized for the styling and for media responsiveness. 
 
 
-![image of password generator](./Assets/passwordGenerator.png)
+![image of password generator](/Assets/passwordGenerator.png)
 
 
 ## Meta

@@ -41,11 +41,12 @@
         let passwordGenerated = '';
         const alphaLower ="abcdefghijklmnopqrstuvwxyz";
         const alphaUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        const special = " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+        const special = " !#$%&'()*+,-./:;<=>?@[]^_`{|}~";
         const numerical = "012345689";
-        let passwordOptions ='';  
+        let passwordOptions ='';
+        let passwordCheck= [];   
 
-        debugger;  
+ 
         document.getElementById("gen").addEventListener("click", function(){ 
             genPassword(); 
             document.getElementById("password").innerHTML = passwordGenerated;
@@ -59,8 +60,8 @@
         }; 
 
         function genPassword() {
-            passwordOptions =''; 
-            passwordGenerated = '';
+            
+            
 //user prompt to determine password lenght
             alert("Welcome to the Password Generator!")
             let numberChar = prompt("How many characters would you like in your password? It must be between 8 and 128.");
@@ -94,16 +95,20 @@
 
     //generate list of characters to use in password based on user selection
             if (useSpecial) {
-                passwordOptions = passwordOptions + special
+                passwordOptions = passwordOptions + special;
+                passwordCheck.push(special); 
                 }; 
             if (useNumerical) {
-                passwordOptions = passwordOptions + numerical
+                passwordOptions = passwordOptions + numerical;
+                passwordCheck.push(numerical); 
                 }; 
             if (useLower) {
-                passwordOptions = passwordOptions + alphaLower
+                passwordOptions = passwordOptions + alphaLower;
+                passwordCheck.push(alphaLower); 
                 }; 
             if (useUpper) {
-                passwordOptions = passwordOptions + alphaUpper
+                passwordOptions = passwordOptions + alphaUpper;
+                passwordCheck.push(alphaUpper); 
                 }; 
 
         
@@ -118,13 +123,51 @@
             let stringLength= passwordOptions.length;
 
     //generate password of given lenght form list of possible characters
-            for (i=0; i < numberChar; i++) {
-                passwordGenerated= passwordGenerated + passwordOptions[randomNum(stringLength)];
+            function generateNewPassword(){ 
+                passwordGenerated = '';
+                for (i=0; i < numberChar; i++) {
+                    passwordGenerated= passwordGenerated + passwordOptions[randomNum(stringLength)];
+                }
+                console.log("Generated password is " + passwordGenerated);
             }
 
-            console.log("Generated password is " + passwordGenerated); 
+            generateNewPassword(); 
+             
+
+           
+            let countCharCheck = 0; 
+            let totalCountCharCheck =[]; 
+            function checkGeneratedPassword (){ 
+                
+                function checkNamedChar(useChar, type) {
+                    if(useSpecial) {
+                        countCharCheck = 0;
+                        for (i=0; i < passwordGenerated.length; i++) {
+                            if (type.indexOf(passwordGenerated[i]) !== -1) {
+                                countCharCheck++; 
+                            }
+                        }
+                        totalCountCharCheck.push(countCharCheck);  
+                    }
+                }
+            
+                checkNamedChar(useSpecial, special);
+                checkNamedChar(useNumerical, numerical);
+                checkNamedChar(useLower, alphaLower);
+                checkNamedChar(useUpper, alphaUpper); 
+
+                console.log(totalCountCharCheck); 
+
+                if (totalCountCharCheck.indexOf(0) !== -1) {
+                    generateNewPassword(); 
+                }
+            }
+
+            checkGeneratedPassword(); 
 
         }
+
+       
 
     </script>
 </body>
