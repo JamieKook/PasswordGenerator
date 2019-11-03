@@ -32,9 +32,6 @@
                 <div class="col-sm-6 mb-2"> 
                     <button onclick="copyPassword()" type="button" id="copy" class="btn btn-secondary btn-lg" >Copy to Clipboard</button>
                 </div>
-                <!-- <div class="col-sm-4 mb-2"> 
-                    <button id="clear" onclick="document.getElementById('password').value = ''" type="button" id="clear" class="btn btn-info btn-lg" >Clear Password</button>
-                </div> -->
             </div>
         </div>
     </div>
@@ -66,13 +63,13 @@
             passwordGenerated = '';
 //user prompt to determine password lenght
             alert("Welcome to the Password Generator!")
-            let numberChar = prompt("How many characters in your password? It must be between 8 and 128.");
+            let numberChar = prompt("How many characters would you like in your password? It must be between 8 and 128.");
             
      
 
             while (numberChar < 8 || numberChar > 128 || isNaN(numberChar)) {
                 alert("You must enter a number between 8 and 128");
-                numberChar = prompt("How many characters in your password? It must be between 8 and 128.");
+                numberChar = prompt("How many characters would you like in your password? It must be between 8 and 128.");
               
 
             }
